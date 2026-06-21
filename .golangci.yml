@@ -1,6 +1,7 @@
 version: "2"
 run:
-tests: true
+  tests: true
+
 linters:
   default: none
   enable:
@@ -112,7 +113,7 @@ formatters:
         - localmodule
     goimports:
       local-prefixes:
-        - # project path
+        - github.com/n1jke/linktracker
   exclusions:
     generated: lax
     paths:
