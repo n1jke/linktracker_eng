@@ -1,0 +1,129 @@
+services:
+  postgre:
+    image: postgres:16-alpine
+    container_name: postgre
+    env_file:
+      - .env
+    ports:
+      - "${DB_PORT}:5432"
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  valkey-1:
+    image: valkey/valkey:9.0.3
+    container_name: valkey-1
+    hostname: valkey-1
+    networks:
+      - valkey-net
+    ports:
+      - "${VALKEY_1_PORT}:6379"
+    command: ["valkey-server", "/etc/valkey/valkey.conf"]
+    healthcheck:
+      test: ["CMD", "valkey-cli", "--user", "${VALKEY_USERNAME}", "-a", "${VALKEY_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    volumes:
+      - ./valkey.conf:/etc/valkey/valkey.conf:ro
+      - ./users.acl:/etc/valkey/users.acl:ro
+      - valkey_1_data:/data
+
+  valkey-2:
+    image: valkey/valkey:9.0.3
+    container_name: valkey-2
+    hostname: valkey-2
+    networks:
+      - valkey-net
+    ports:
+      - "${VALKEY_2_PORT}:6379"
+    command: >
+      valkey-server /etc/valkey/valkey.conf 
+      --replicaof valkey-1 6379 
+      --masteruser ${VALKEY_USERNAME} 
+      --masterauth ${VALKEY_PASSWORD}
+    healthcheck:
+      test: ["CMD", "valkey-cli", "--user", "${VALKEY_USERNAME}", "-a", "${VALKEY_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+    volumes:
+      - ./valkey.conf:/etc/valkey/valkey.conf:ro
+      - ./users.acl:/etc/valkey/users.acl:ro
+      - valkey_2_data:/data
+
+  valkey-3: 
+    image: valkey/valkey:9.0.3
+    container_name: valkey-3
+    hostname: valkey-3
+    networks:
+      - valkey-net
+    ports:
+      - "${VALKEY_3_PORT}:6379"
+    command: >
+      valkey-server /etc/valkey/valkey.conf 
+      --replicaof valkey-1 6379 
+      --masteruser ${VALKEY_USERNAME} 
+      --masterauth ${VALKEY_PASSWORD}
+    healthcheck:
+      test: ["CMD", "valkey-cli", "--user", "${VALKEY_USERNAME}", "-a", "${VALKEY_PASSWORD}", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    depends_on:
+      valkey-1:
+        condition: service_healthy
+    volumes:
+      - ./valkey.conf:/etc/valkey/valkey.conf:ro
+      - ./users.acl:/etc/valkey/users.acl:ro
+      - valkey_3_data:/data
+
+  sentinel:
+    image: valkey/valkey:9.0.3
+    container_name: sentinel
+    hostname: sentinel
+    networks:
+      - valkey-net
+    ports:
+      - "${VALKEY_SENTINEL_PORT}:26379"
+    command: ["valkey-sentinel", "/etc/sentinel/sentinel.conf"]
+    depends_on:
+      valkey-1:
+        condition: service_healthy
+      valkey-2:
+        condition: service_healthy
+      valkey-3:
+        condition: service_healthy
+    volumes:
+      - ./sentinel.conf:/etc/sentinel/sentinel.conf
+    healthcheck:
+      test: ["CMD", "valkey-cli", "-p", "26379", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+volumes:
+  pg_data:
+  valkey_1_data:
+  valkey_2_data:
+  valkey_3_data:
+
+networks:
+  valkey-net:
+    driver: bridge

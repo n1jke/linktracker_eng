@@ -1,0 +1,6 @@
+package: bothttp
+generate:
+  std-http-server: true
+  client: true
+  models: true
+output: ./../../internal/infrastructure/transport/http/bot/codegen.go

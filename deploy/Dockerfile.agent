@@ -1,0 +1,15 @@
+FROM golang:1.26-alpine AS builder
+
+WORKDIR /build
+
+COPY ./go.mod ./go.sum ./
+RUN go mod download
+
+COPY . .
+RUN go build -p=2 -o /build/agent ./cmd/agent
+
+FROM alpine:latest AS runtime
+
+COPY --from=builder /build/agent /bin/agent
+
+CMD ["/bin/agent"]

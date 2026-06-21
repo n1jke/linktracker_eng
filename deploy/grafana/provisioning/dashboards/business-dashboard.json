@@ -1,0 +1,194 @@
+{
+  "title": "business metrics",
+  "uid": "link-tracker-business",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-1h", "to": "now" },
+  "tags": ["link-tracker", "business"],
+  "templating": {
+    "list": [
+      {
+        "name": "app",
+        "label": "Application",
+        "type": "custom",
+        "query": "bot, scrapper, agent",
+        "current": { "text": "bot", "value": "bot" },
+        "includeAll": false,
+        "multi": false,
+        "refresh": 1,
+        "sort": 0
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "links_on_track_total",
+      "description": "count of tracked links",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "links_on_track_total{job=\"$app\"}",
+          "legendFormat": "total"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "short" },
+        "overrides": []
+      }
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "bot rate",
+      "description": "rate for bot requests",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "sum by (command) (rate(command_requests_total{job=\"$app\"}[1m]))",
+          "legendFormat": "{{command}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "ops" },
+        "overrides": []
+      }
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "scrapper rate",
+      "description": "rate for scrapper requests",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "sum by (source) (rate(api_requests_total{job=\"$app\"}[1m]))",
+          "legendFormat": "{{source}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "reqps" },
+        "overrides": []
+      }
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "operations quantile",
+      "description": "p90 fordatabase, external_source, llm_agent",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum by (le, scope) (rate(request_duration_ms_total_bucket{job=\"$app\"}[5m])))",
+          "legendFormat": "p50 {{scope}}"
+        },
+        {
+          "expr": "histogram_quantile(0.95, sum by (le, scope) (rate(request_duration_ms_total_bucket{job=\"$app\"}[5m])))",
+          "legendFormat": "p95 {{scope}}"
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum by (le, scope) (rate(request_duration_ms_total_bucket{job=\"$app\"}[5m])))",
+          "legendFormat": "p99 {{scope}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "ms" },
+        "overrides": []
+      }
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "bot duration",
+      "description": "bot command percentile",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 16 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum by (le, scope) (rate(command_duration_ms_total_bucket{job=\"$app\"}[5m])))",
+          "legendFormat": "p50 {{scope}}"
+        },
+        {
+          "expr": "histogram_quantile(0.90, sum by (le, scope) (rate(command_duration_ms_total_bucket{job=\"$app\"}[5m])))",
+          "legendFormat": "p90 {{scope}}"
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum by (le, scope) (rate(command_duration_ms_total_bucket{job=\"$app\"}[5m])))",
+          "legendFormat": "p99 {{scope}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "ms" },
+        "overrides": []
+      }
+    },
+    {
+      "id": 6,
+      "type": "stat",
+      "title": "sent_notification_total",
+      "description": "cound of send updates from tracked links",
+      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 16 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "sent_notification_total{job=\"$app\"}"
+        }
+      ],
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
+      }
+    },
+    {
+      "id": 7,
+      "type": "stat",
+      "title": "notifications rate",
+      "description": "rate for notifications by tracked link",
+      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 16 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "rate(sent_notification_total{job=\"$app\"}[5m]) * 60"
+        }
+      ],
+      "options": {
+        "reduceOptions": { "calcs": ["lastNotNull"], "fields": "", "values": false }
+      },
+      "fieldConfig": {
+        "defaults": { "unit": "short" },
+        "overrides": []
+      }
+    },
+    {
+      "id": 8,
+      "type": "timeseries",
+      "title": "agent llm duration",
+      "description": "Duration of llm summarization call(request_duration_ms_total)",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 24 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum by (le, scope_type) (rate(request_duration_ms_total_bucket{job=\"agent\"}[5m])))",
+          "legendFormat": "p50 {{scope_type}}"
+        },
+        {
+          "expr": "histogram_quantile(0.95, sum by (le, scope_type) (rate(request_duration_ms_total_bucket{job=\"agent\"}[5m])))",
+          "legendFormat": "p95 {{scope_type}}"
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum by (le, scope_type) (rate(request_duration_ms_total_bucket{job=\"agent\"}[5m])))",
+          "legendFormat": "p99 {{scope_type}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "ms" },
+        "overrides": []
+      }
+    }
+  ]
+}

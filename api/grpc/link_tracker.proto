@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package linktracker;
+
+option go_package = "github.com/n1jke/linktracker/internal/infrastructure/transport/grpc;grpc";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+service ScrapperService {
+  rpc RegisterChat(RegisterChatRequest) returns (google.protobuf.Empty);
+  rpc TrackLink(TrackLinkRequest) returns (LinkResponse);
+  rpc UntrackLink(UntrackLinkRequest) returns (LinkResponse);
+  rpc ListLinks(ListLinksRequest) returns (ListLinksResponse);
+  rpc AddTags(AddTagsRequest) returns (LinkResponse);
+  rpc ClearTags(ClearTagsRequest) returns (LinkResponse);
+}
+
+service BotService {
+  rpc PostUpdate(LinkUpdate) returns (google.protobuf.Empty);
+}
+
+message RegisterChatRequest {
+  int64 chat_id = 1;
+}
+
+message TrackLinkRequest {
+  int64 chat_id = 1;
+  string url = 2;
+  repeated string tags = 3;
+}
+
+message UntrackLinkRequest {
+  int64 chat_id = 1;
+  string url = 2;
+}
+
+message ListLinksRequest {
+  int64 chat_id = 1;
+}
+
+message AddTagsRequest {
+  int64 chat_id = 1;
+  string url = 2;
+  repeated string tags = 3;
+}
+
+message ClearTagsRequest {
+  int64 chat_id = 1;
+  string url = 2;
+}
+
+message LinkResponse {
+  string id = 1;
+  string url = 2;
+  repeated string tags = 3;
+}
+
+message ListLinksResponse {
+  repeated LinkResponse links = 1;
+  int64 size = 2;
+}
+
+message LinkUpdate {
+  int64 id = 1;
+  string url = 2;
+  string description = 3;
+  repeated int64 chat_ids = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}

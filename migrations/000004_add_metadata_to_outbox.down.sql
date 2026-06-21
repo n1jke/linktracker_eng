@@ -1,0 +1,6 @@
+BEGIN;
+
+ALTER TABLE outbox DROP COLUMN event_type;
+ALTER TABLE outbox DROP COLUMN author;
+
+COMMIT;

@@ -1,0 +1,140 @@
+{
+  "title": "RED",
+  "uid": "link-tracker-red",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-30m", "to": "now" },
+  "tags": ["link-tracker", "red"],
+  "templating": {
+    "list": [
+      {
+        "name": "app",
+        "label": "Service",
+        "type": "custom",
+        "query": "bot, scrapper, agent",
+        "current": { "text": "bot", "value": "bot" },
+        "includeAll": false,
+        "multi": false,
+        "refresh": 1,
+        "sort": 0
+      }
+    ]
+  },
+  "panels": [
+    {
+      "id": 1,
+      "type": "timeseries",
+      "title": "rate",
+      "description": "bot - команды от пользователей (command_requests_total), scrapper - входящие вызовы (api_requests_total).",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "sum by (command) (rate(command_requests_total{job=\"$app\"}[5m]))",
+          "legendFormat": "command={{command}}"
+        },
+        {
+          "expr": "sum by (source) (rate(api_requests_total{job=\"$app\"}[5m]))",
+          "legendFormat": "source={{source}}"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "reqps" },
+        "overrides": []
+      }
+    },
+    {
+      "id": 2,
+      "type": "timeseries",
+      "title": "duration — p50 / p90 / p99",
+      "description": "Latency(bot - command_duration_ms_total; scrapper - request_duration_ms_total.",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "histogram_quantile(0.50, sum by (le) (rate({__name__=~\"command_duration_ms_total_bucket|request_duration_ms_total_bucket\", job=\"$app\"}[5m])))",
+          "legendFormat": "p50"
+        },
+        {
+          "expr": "histogram_quantile(0.90, sum by (le) (rate({__name__=~\"command_duration_ms_total_bucket|request_duration_ms_total_bucket\", job=\"$app\"}[5m])))",
+          "legendFormat": "p90"
+        },
+        {
+          "expr": "histogram_quantile(0.99, sum by (le) (rate({__name__=~\"command_duration_ms_total_bucket|request_duration_ms_total_bucket\", job=\"$app\"}[5m])))",
+          "legendFormat": "p99"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "ms" },
+        "overrides": []
+      }
+    },
+    {
+      "id": 3,
+      "type": "timeseries",
+      "title": "memory",
+      "description": "Memory, virtual memory, heap usage by service",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "process_resident_memory_bytes{job=\"$app\"}",
+          "legendFormat": "Memory"
+        },
+        {
+          "expr": "process_virtual_memory_bytes{job=\"$app\"}",
+          "legendFormat": "Virtual"
+        },
+        {
+          "expr": "go_memstats_heap_inuse_bytes{job=\"$app\"}",
+          "legendFormat": "Heap"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "bytes" },
+        "overrides": []
+      }
+    },
+    {
+      "id": 4,
+      "type": "timeseries",
+      "title": "errors",
+      "description": "Liveness check. Returns 1 when service stops pushing metrics to Pushgateway (>5m)",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "absent(up{job=\"$app\"})",
+          "legendFormat": "down"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "min": 0,
+          "max": 1
+        },
+        "overrides": []
+      }
+    },
+    {
+      "id": 5,
+      "type": "timeseries",
+      "title": "goroutines",
+      "description": "Number of goroutines",
+      "gridPos": { "h": 6, "w": 12, "x": 0, "y": 16 },
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "targets": [
+        {
+          "expr": "go_goroutines{job=\"$app\"}",
+          "legendFormat": "goroutines"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": { "unit": "short" },
+        "overrides": []
+      }
+    }
+  ]
+}

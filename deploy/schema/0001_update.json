@@ -1,0 +1,35 @@
+{
+  "type": "record",
+  "name": "LinkUpdateEvent",
+  "namespace": "com.example.notification",
+  "fields": [
+    {
+      "name": "id",
+      "type": "long",
+      "doc": "ID"
+    },
+    {
+      "name": "url",
+      "type": "string",
+      "doc": "URL"
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "doc": "Description"
+    },
+    {
+      "name": "chat_ids",
+      "type": {
+        "type": "array",
+        "items": "long"
+      },
+      "doc": "[]chatID"
+    },
+    {
+      "name": "updated_at",
+      "type": "string",
+      "doc": "UpdateTime in RFC3339 format"
+    }
+  ]
+}
