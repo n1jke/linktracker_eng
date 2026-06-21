@@ -7,14 +7,13 @@
 package grpc
 
 import (
-	reflect "reflect"
-	sync "sync"
-	unsafe "unsafe"
-
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
+	reflect "reflect"
+	sync "sync"
+	unsafe "unsafe"
 )
 
 const (
@@ -572,7 +571,7 @@ const file_link_tracker_proto_rawDesc = "" +
 	"\n" +
 	"BotService\x12=\n" +
 	"\n" +
-	"PostUpdate\x12\x17.linktracker.LinkUpdate\x1a\x16.google.protobuf.EmptyBvZtgithub.com/n1jke/linktracker/internal/infrastructure/transport/grpc;grpcb\x06proto3"
+	"PostUpdate\x12\x17.linktracker.LinkUpdate\x1a\x16.google.protobuf.EmptyBJZHgithub.com/n1jke/linktracker/internal/infrastructure/transport/grpc;grpcb\x06proto3"
 
 var (
 	file_link_tracker_proto_rawDescOnce sync.Once
@@ -586,22 +585,20 @@ func file_link_tracker_proto_rawDescGZIP() []byte {
 	return file_link_tracker_proto_rawDescData
 }
 
-var (
-	file_link_tracker_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
-	file_link_tracker_proto_goTypes  = []any{
-		(*RegisterChatRequest)(nil),   // 0: linktracker.RegisterChatRequest
-		(*TrackLinkRequest)(nil),      // 1: linktracker.TrackLinkRequest
-		(*UntrackLinkRequest)(nil),    // 2: linktracker.UntrackLinkRequest
-		(*ListLinksRequest)(nil),      // 3: linktracker.ListLinksRequest
-		(*AddTagsRequest)(nil),        // 4: linktracker.AddTagsRequest
-		(*ClearTagsRequest)(nil),      // 5: linktracker.ClearTagsRequest
-		(*LinkResponse)(nil),          // 6: linktracker.LinkResponse
-		(*ListLinksResponse)(nil),     // 7: linktracker.ListLinksResponse
-		(*LinkUpdate)(nil),            // 8: linktracker.LinkUpdate
-		(*timestamppb.Timestamp)(nil), // 9: google.protobuf.Timestamp
-		(*emptypb.Empty)(nil),         // 10: google.protobuf.Empty
-	}
-)
+var file_link_tracker_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_link_tracker_proto_goTypes = []any{
+	(*RegisterChatRequest)(nil),   // 0: linktracker.RegisterChatRequest
+	(*TrackLinkRequest)(nil),      // 1: linktracker.TrackLinkRequest
+	(*UntrackLinkRequest)(nil),    // 2: linktracker.UntrackLinkRequest
+	(*ListLinksRequest)(nil),      // 3: linktracker.ListLinksRequest
+	(*AddTagsRequest)(nil),        // 4: linktracker.AddTagsRequest
+	(*ClearTagsRequest)(nil),      // 5: linktracker.ClearTagsRequest
+	(*LinkResponse)(nil),          // 6: linktracker.LinkResponse
+	(*ListLinksResponse)(nil),     // 7: linktracker.ListLinksResponse
+	(*LinkUpdate)(nil),            // 8: linktracker.LinkUpdate
+	(*timestamppb.Timestamp)(nil), // 9: google.protobuf.Timestamp
+	(*emptypb.Empty)(nil),         // 10: google.protobuf.Empty
+}
 var file_link_tracker_proto_depIdxs = []int32{
 	6,  // 0: linktracker.ListLinksResponse.links:type_name -> linktracker.LinkResponse
 	9,  // 1: linktracker.LinkUpdate.updated_at:type_name -> google.protobuf.Timestamp
