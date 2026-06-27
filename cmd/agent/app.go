@@ -7,16 +7,16 @@ import (
 	"go.uber.org/fx"
 	"go.uber.org/fx/fxevent"
 
-	"github.com/n1jke/linktracker/config"
-	"github.com/n1jke/linktracker/internal/agent/application"
-	"github.com/n1jke/linktracker/internal/agent/domain"
-	"github.com/n1jke/linktracker/internal/agent/infrastructure/ai"
-	"github.com/n1jke/linktracker/internal/agent/infrastructure/kafka/consumer"
-	"github.com/n1jke/linktracker/internal/agent/infrastructure/kafka/producer"
-	"github.com/n1jke/linktracker/internal/agent/infrastructure/repository"
-	"github.com/n1jke/linktracker/internal/agent/infrastructure/scheduler"
-	"github.com/n1jke/linktracker/internal/agent/infrastructure/telemetry"
-	sharedrepo "github.com/n1jke/linktracker/internal/infrastructure/repository"
+	"github.com/n1jke/linktracker_eng/config"
+	"github.com/n1jke/linktracker_eng/internal/agent/application"
+	"github.com/n1jke/linktracker_eng/internal/agent/domain"
+	"github.com/n1jke/linktracker_eng/internal/agent/infrastructure/ai"
+	"github.com/n1jke/linktracker_eng/internal/agent/infrastructure/kafka/consumer"
+	"github.com/n1jke/linktracker_eng/internal/agent/infrastructure/kafka/producer"
+	"github.com/n1jke/linktracker_eng/internal/agent/infrastructure/repository"
+	"github.com/n1jke/linktracker_eng/internal/agent/infrastructure/scheduler"
+	"github.com/n1jke/linktracker_eng/internal/agent/infrastructure/telemetry"
+	sharedrepo "github.com/n1jke/linktracker_eng/internal/infrastructure/repository"
 )
 
 func NewApp() fx.Option {

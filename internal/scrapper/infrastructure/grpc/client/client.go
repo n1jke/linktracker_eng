@@ -9,9 +9,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/types/known/timestamppb"
 
-	transportgrpc "github.com/n1jke/linktracker/internal/infrastructure/transport/grpc"
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	"github.com/n1jke/linktracker/pkg/retry"
+	transportgrpc "github.com/n1jke/linktracker_eng/internal/infrastructure/transport/grpc"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/pkg/retry"
 )
 
 type BotGRPCClient struct {

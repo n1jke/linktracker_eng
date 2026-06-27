@@ -11,7 +11,7 @@ import (
 	"github.com/go-telegram/bot/models"
 	"github.com/google/uuid"
 
-	consumer "github.com/n1jke/linktracker/internal/bot/infrastructure/kafka"
+	consumer "github.com/n1jke/linktracker_eng/internal/bot/infrastructure/kafka"
 )
 
 type Transactor interface {
@@ -94,7 +94,8 @@ func NewSentinel(logger *slog.Logger, notifier BotNotifier, tx Transactor, inbox
 }
 
 func (s *Sentinel) Start(ctx context.Context) error {
-	_, err := s.scheduler.NewJob(gocron.DurationJob(s.inboxRelay),
+	_, err := s.scheduler.NewJob(
+		gocron.DurationJob(s.inboxRelay),
 		gocron.NewTask(s.relayInbox, ctx),
 		gocron.WithName("inbox-relay"),
 		gocron.WithContext(ctx),
@@ -103,7 +104,8 @@ func (s *Sentinel) Start(ctx context.Context) error {
 		return err
 	}
 
-	_, err = s.scheduler.NewJob(gocron.DurationJob(s.inboxClean),
+	_, err = s.scheduler.NewJob(
+		gocron.DurationJob(s.inboxClean),
 		gocron.NewTask(s.cleanInbox, ctx),
 		gocron.WithName("inbox-clean"),
 		gocron.WithContext(ctx),
@@ -112,7 +114,8 @@ func (s *Sentinel) Start(ctx context.Context) error {
 		return err
 	}
 
-	_, err = s.scheduler.NewJob(gocron.DurationJob(s.metricsPush),
+	_, err = s.scheduler.NewJob(
+		gocron.DurationJob(s.metricsPush),
 		gocron.NewTask(s.pusher.Push, ctx),
 		gocron.WithName("metrics-push"),
 		gocron.WithContext(ctx),

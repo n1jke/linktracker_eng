@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
 
-	transportgrpc "github.com/n1jke/linktracker/internal/infrastructure/transport/grpc"
+	transportgrpc "github.com/n1jke/linktracker_eng/internal/infrastructure/transport/grpc"
 )
 
 type BotGRPCServer struct {

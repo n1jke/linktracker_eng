@@ -5,8 +5,8 @@ import (
 
 	"go.uber.org/fx"
 
-	"github.com/n1jke/linktracker/config"
-	"github.com/n1jke/linktracker/internal/agent/domain"
+	"github.com/n1jke/linktracker_eng/config"
+	"github.com/n1jke/linktracker_eng/internal/agent/domain"
 )
 
 var Module = fx.Module(

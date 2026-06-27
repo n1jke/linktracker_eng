@@ -13,7 +13,7 @@ import (
 	context "context"
 	reflect "reflect"
 
-	consumer "github.com/n1jke/linktracker/internal/bot/infrastructure/kafka"
+	consumer "github.com/n1jke/linktracker_eng/internal/bot/infrastructure/kafka"
 	gomock "go.uber.org/mock/gomock"
 )
 

@@ -16,10 +16,10 @@ import (
 	"github.com/testcontainers/testcontainers-go/modules/valkey"
 	"go.uber.org/mock/gomock"
 
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	"github.com/n1jke/linktracker/internal/scrapper/application/mocks"
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
-	cache "github.com/n1jke/linktracker/internal/scrapper/infrastructure/repository/valkey"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application/mocks"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
+	cache "github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/repository/valkey"
 )
 
 func Test_Valkey(t *testing.T) {
@@ -159,7 +159,8 @@ func setupCache(ctx context.Context, t *testing.T) *cache.Valkey {
 	ctx, cancel := context.WithTimeout(ctx, 90*time.Second)
 	t.Cleanup(cancel)
 
-	container, err := valkey.Run(ctx,
+	container, err := valkey.Run(
+		ctx,
 		"valkey/valkey:9.0.3",
 		valkey.WithSnapshotting(10, 1),
 		valkey.WithLogLevel(valkey.LogLevelDebug),

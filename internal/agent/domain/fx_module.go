@@ -3,7 +3,7 @@ package domain
 import (
 	"go.uber.org/fx"
 
-	"github.com/n1jke/linktracker/config"
+	"github.com/n1jke/linktracker_eng/config"
 )
 
 var Module = fx.Module(

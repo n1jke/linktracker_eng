@@ -8,8 +8,8 @@ import (
 
 	"github.com/jackc/pgx/v5"
 
-	"github.com/n1jke/linktracker/config"
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
+	"github.com/n1jke/linktracker_eng/config"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
 )
 
 const (

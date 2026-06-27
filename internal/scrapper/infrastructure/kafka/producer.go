@@ -12,7 +12,7 @@ import (
 	"github.com/segmentio/kafka-go"
 	"github.com/segmentio/kafka-go/sasl/plain"
 
-	"github.com/n1jke/linktracker/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
 )
 
 const writeTimeout = 3 * time.Second

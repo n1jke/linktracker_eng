@@ -15,8 +15,8 @@ import (
 	time "time"
 
 	uuid "github.com/google/uuid"
-	application "github.com/n1jke/linktracker/internal/scrapper/application"
-	domain "github.com/n1jke/linktracker/internal/scrapper/domain"
+	application "github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	domain "github.com/n1jke/linktracker_eng/internal/scrapper/domain"
 	gomock "go.uber.org/mock/gomock"
 )
 

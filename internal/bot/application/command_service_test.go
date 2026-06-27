@@ -9,9 +9,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
-	"github.com/n1jke/linktracker/internal/bot/application"
-	"github.com/n1jke/linktracker/internal/bot/application/mocks"
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
+	"github.com/n1jke/linktracker_eng/internal/bot/application"
+	"github.com/n1jke/linktracker_eng/internal/bot/application/mocks"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
 )
 
 func TestCommandUseCase_AvailableHandler(t *testing.T) {

@@ -11,9 +11,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
-	"github.com/n1jke/linktracker/internal/scrapper/infrastructure/crawlers"
-	"github.com/n1jke/linktracker/internal/scrapper/infrastructure/crawlers/mocks"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/crawlers"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/crawlers/mocks"
 )
 
 const githubToken = "test-token"

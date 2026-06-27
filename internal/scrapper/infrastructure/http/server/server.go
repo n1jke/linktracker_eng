@@ -5,8 +5,8 @@ import (
 	"errors"
 	"net/http"
 
-	scrapperhttp "github.com/n1jke/linktracker/internal/infrastructure/transport/http/scrapper"
-	"github.com/n1jke/linktracker/internal/scrapper/application"
+	scrapperhttp "github.com/n1jke/linktracker_eng/internal/infrastructure/transport/http/scrapper"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
 )
 
 type ScrapperServer struct {

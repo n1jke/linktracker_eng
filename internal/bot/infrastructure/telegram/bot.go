@@ -9,8 +9,8 @@ import (
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"
 
-	"github.com/n1jke/linktracker/config"
-	"github.com/n1jke/linktracker/pkg/retry"
+	"github.com/n1jke/linktracker_eng/config"
+	"github.com/n1jke/linktracker_eng/pkg/retry"
 )
 
 var ErrTokenRequire = errors.New("token is required")

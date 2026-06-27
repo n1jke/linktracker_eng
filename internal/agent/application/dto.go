@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/n1jke/linktracker/internal/agent/domain"
+	"github.com/n1jke/linktracker_eng/internal/agent/domain"
 )
 
 type RawUpdate struct {

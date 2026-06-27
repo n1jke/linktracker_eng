@@ -7,8 +7,8 @@ import (
 	"github.com/go-telegram/bot"
 	"github.com/go-telegram/bot/models"
 
-	"github.com/n1jke/linktracker/internal/bot/application"
-	"github.com/n1jke/linktracker/pkg/retry"
+	"github.com/n1jke/linktracker_eng/internal/bot/application"
+	"github.com/n1jke/linktracker_eng/pkg/retry"
 )
 
 const ServiceUnavailable = "Сервис временно недоступен, попробуйте позже"

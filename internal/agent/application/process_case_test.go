@@ -11,9 +11,9 @@ import (
 	"github.com/stretchr/testify/require"
 	"go.uber.org/mock/gomock"
 
-	"github.com/n1jke/linktracker/internal/agent/application"
-	"github.com/n1jke/linktracker/internal/agent/application/mocks"
-	"github.com/n1jke/linktracker/internal/agent/domain"
+	"github.com/n1jke/linktracker_eng/internal/agent/application"
+	"github.com/n1jke/linktracker_eng/internal/agent/application/mocks"
+	"github.com/n1jke/linktracker_eng/internal/agent/domain"
 )
 
 const workerCount = 10

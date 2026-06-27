@@ -6,8 +6,8 @@ import (
 	"log/slog"
 	"time"
 
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	"github.com/n1jke/linktracker/internal/scrapper/infrastructure/scheduler"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/scheduler"
 )
 
 type Notifier struct {

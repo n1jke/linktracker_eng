@@ -10,9 +10,9 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	sharedrepo "github.com/n1jke/linktracker/internal/infrastructure/repository"
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
+	sharedrepo "github.com/n1jke/linktracker_eng/internal/infrastructure/repository"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
 )
 
 type MetricsRecorder interface {

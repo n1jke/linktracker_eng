@@ -13,8 +13,8 @@ import (
 	context "context"
 	reflect "reflect"
 
-	application "github.com/n1jke/linktracker/internal/bot/application"
-	domain "github.com/n1jke/linktracker/internal/scrapper/domain"
+	application "github.com/n1jke/linktracker_eng/internal/bot/application"
+	domain "github.com/n1jke/linktracker_eng/internal/scrapper/domain"
 	gomock "go.uber.org/mock/gomock"
 )
 

@@ -7,7 +7,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/n1jke/linktracker/internal/agent/domain"
+	"github.com/n1jke/linktracker_eng/internal/agent/domain"
 )
 
 const previewLimit = 200

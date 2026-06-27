@@ -8,8 +8,8 @@ import (
 
 	"github.com/segmentio/kafka-go"
 
-	"github.com/n1jke/linktracker/internal/agent/application"
-	"github.com/n1jke/linktracker/pkg"
+	"github.com/n1jke/linktracker_eng/internal/agent/application"
+	"github.com/n1jke/linktracker_eng/pkg"
 )
 
 func (k *KafkaConsumer) handleFailure(ctx context.Context, msg *kafka.Message, causeErr error, op string) error {

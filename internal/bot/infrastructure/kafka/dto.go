@@ -3,7 +3,7 @@ package consumer
 import (
 	"errors"
 
-	"github.com/n1jke/linktracker/pkg"
+	"github.com/n1jke/linktracker_eng/pkg"
 )
 
 type Update struct {

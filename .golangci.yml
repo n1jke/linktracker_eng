@@ -113,7 +113,7 @@ formatters:
         - localmodule
     goimports:
       local-prefixes:
-        - github.com/n1jke/linktracker
+        - github.com/n1jke/linktracker_eng
   exclusions:
     generated: lax
     paths:

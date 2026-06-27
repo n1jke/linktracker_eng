@@ -46,7 +46,7 @@ run:
 .PHONY: test
 test:
 	@echo "Running fast tests..."
-	@go test -coverpkg='github.com/n1jke/linktracker/...' --race -count=1 -coverprofile='$(COVERAGE_FILE)' ./...
+	@go test -coverpkg='github.com/n1jke/linktracker_eng/...' --race -count=1 -coverprofile='$(COVERAGE_FILE)' ./...
 	@go tool cover -func='$(COVERAGE_FILE)' | grep ^total | tr -s '\t'
 
 ## test-slow: run slow integration tests
@@ -59,7 +59,7 @@ test-slow:
 .PHONY: test-slow 
 test-all:
 	@echo "Running all tests..."
-	@go test -coverpkg='github.com/n1jke/linktracker/...' --race -count=1 -tags=integration -timeout=90s -coverprofile='$(COVERAGE_FILE)' ./...
+	@go test -coverpkg='github.com/n1jke/linktracker_eng/...' --race -count=1 -tags=integration -timeout=90s -coverprofile='$(COVERAGE_FILE)' ./...
 	@go tool cover -func='$(COVERAGE_FILE)' | grep ^total | tr -s '\t'
 
 ## html_test: generate html test report

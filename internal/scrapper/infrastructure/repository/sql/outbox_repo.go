@@ -7,9 +7,9 @@ import (
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	sharedrepo "github.com/n1jke/linktracker/internal/infrastructure/repository"
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	"github.com/n1jke/linktracker/internal/scrapper/infrastructure/repository"
+	sharedrepo "github.com/n1jke/linktracker_eng/internal/infrastructure/repository"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/repository"
 )
 
 const (

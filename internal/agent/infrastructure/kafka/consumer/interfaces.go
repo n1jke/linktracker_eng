@@ -5,7 +5,7 @@ import (
 
 	"github.com/segmentio/kafka-go"
 
-	"github.com/n1jke/linktracker/internal/agent/application"
+	"github.com/n1jke/linktracker_eng/internal/agent/application"
 )
 
 //go:generate mockgen -source interfaces.go -destination=mocks/mocks.go -package=mocks

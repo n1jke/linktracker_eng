@@ -8,7 +8,7 @@ import (
 
 	"github.com/riferrei/srclient"
 
-	"github.com/n1jke/linktracker/config"
+	"github.com/n1jke/linktracker_eng/config"
 )
 
 const schemaDir = "/schemas"

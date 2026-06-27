@@ -12,10 +12,10 @@ import (
 	"github.com/testcontainers/testcontainers-go"
 	postgrescontainer "github.com/testcontainers/testcontainers-go/modules/postgres"
 
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
-	querybuilder "github.com/n1jke/linktracker/internal/scrapper/infrastructure/repository/query_builder"
-	sqlstorage "github.com/n1jke/linktracker/internal/scrapper/infrastructure/repository/sql"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
+	querybuilder "github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/repository/query_builder"
+	sqlstorage "github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/repository/sql"
 )
 
 type metricsMock struct{}
@@ -139,7 +139,8 @@ func setupDB(ctx context.Context, t *testing.T) *pgxpool.Pool {
 	ctx, cancel := context.WithTimeout(ctx, 90*time.Second)
 	t.Cleanup(cancel)
 
-	container, err := postgrescontainer.Run(ctx,
+	container, err := postgrescontainer.Run(
+		ctx,
 		"postgres:16-alpine",
 		postgrescontainer.WithDatabase(t.Name()),
 		postgrescontainer.WithUsername("scrapper"),

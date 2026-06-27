@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-co-op/gocron/v2"
 
-	"github.com/n1jke/linktracker/internal/agent/application"
+	"github.com/n1jke/linktracker_eng/internal/agent/application"
 )
 
 type OutboxRepository interface {
@@ -91,7 +91,8 @@ func NewSentinel(logger *slog.Logger, service *application.AgentService, publish
 }
 
 func (s *Sentinel) Start(ctx context.Context) error {
-	_, err := s.scheduler.NewJob(gocron.DurationJob(s.outboxRelay),
+	_, err := s.scheduler.NewJob(
+		gocron.DurationJob(s.outboxRelay),
 		gocron.NewTask(s.relayOutbox, ctx),
 		gocron.WithName("outbox-relay"),
 		gocron.WithContext(ctx),
@@ -100,7 +101,8 @@ func (s *Sentinel) Start(ctx context.Context) error {
 		return err
 	}
 
-	_, err = s.scheduler.NewJob(gocron.DurationJob(s.inboxRelay),
+	_, err = s.scheduler.NewJob(
+		gocron.DurationJob(s.inboxRelay),
 		gocron.NewTask(s.relayInbox, ctx),
 		gocron.WithName("inbox-relay"),
 		gocron.WithContext(ctx),
@@ -109,7 +111,8 @@ func (s *Sentinel) Start(ctx context.Context) error {
 		return err
 	}
 
-	_, err = s.scheduler.NewJob(gocron.DurationJob(s.outboxClean),
+	_, err = s.scheduler.NewJob(
+		gocron.DurationJob(s.outboxClean),
 		gocron.NewTask(s.cleanOutbox, ctx),
 		gocron.WithName("outbox-clean"),
 		gocron.WithContext(ctx),
@@ -118,7 +121,8 @@ func (s *Sentinel) Start(ctx context.Context) error {
 		return err
 	}
 
-	_, err = s.scheduler.NewJob(gocron.DurationJob(s.inboxClean),
+	_, err = s.scheduler.NewJob(
+		gocron.DurationJob(s.inboxClean),
 		gocron.NewTask(s.cleanInbox, ctx),
 		gocron.WithName("inbox-clean"),
 		gocron.WithContext(ctx),
@@ -127,7 +131,8 @@ func (s *Sentinel) Start(ctx context.Context) error {
 		return err
 	}
 
-	_, err = s.scheduler.NewJob(gocron.DurationJob(s.metricsPush),
+	_, err = s.scheduler.NewJob(
+		gocron.DurationJob(s.metricsPush),
 		gocron.NewTask(s.pusher.Push, ctx),
 		gocron.WithName("metrics push"),
 		gocron.WithContext(ctx),

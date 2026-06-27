@@ -9,7 +9,7 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/n1jke/linktracker/internal/infrastructure/transport"
+	"github.com/n1jke/linktracker_eng/internal/infrastructure/transport"
 )
 
 const scope = "grpc"

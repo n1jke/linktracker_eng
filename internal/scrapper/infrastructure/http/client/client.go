@@ -10,9 +10,9 @@ import (
 
 	"github.com/sony/gobreaker/v2"
 
-	bothttp "github.com/n1jke/linktracker/internal/infrastructure/transport/http/bot"
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	"github.com/n1jke/linktracker/pkg/retry"
+	bothttp "github.com/n1jke/linktracker_eng/internal/infrastructure/transport/http/bot"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/pkg/retry"
 )
 
 var ErrUnexpectedCode = errors.New("unexpected returned code")

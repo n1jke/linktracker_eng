@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
 )
 
 //go:generate mockgen -source=command_service.go -exclude_interfaces=MetricsRecorder -destination=mocks/mocks.go -package=mocks

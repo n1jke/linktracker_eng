@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package linktracker;
 
-option go_package = "github.com/n1jke/linktracker/internal/infrastructure/transport/grpc;grpc";
+option go_package = "github.com/n1jke/linktracker_eng/internal/infrastructure/transport/grpc;grpc";
 
 import "google/protobuf/empty.proto";
 import "google/protobuf/timestamp.proto";

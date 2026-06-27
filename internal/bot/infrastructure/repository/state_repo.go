@@ -3,7 +3,7 @@ package repository
 import (
 	"sync"
 
-	"github.com/n1jke/linktracker/internal/bot/application"
+	"github.com/n1jke/linktracker_eng/internal/bot/application"
 )
 
 type InMemoryChatStateRepository struct {

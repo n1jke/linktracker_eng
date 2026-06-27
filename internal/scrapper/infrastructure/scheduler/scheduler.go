@@ -8,8 +8,8 @@ import (
 
 	"github.com/go-co-op/gocron/v2"
 
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	"github.com/n1jke/linktracker/internal/scrapper/infrastructure/repository"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/repository"
 )
 
 type OutboxRepository interface {

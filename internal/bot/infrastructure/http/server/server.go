@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-telegram/bot"
 
-	bothttp "github.com/n1jke/linktracker/internal/infrastructure/transport/http/bot"
+	bothttp "github.com/n1jke/linktracker_eng/internal/infrastructure/transport/http/bot"
 )
 
 type BotServer struct {

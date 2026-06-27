@@ -1,4 +1,4 @@
-module github.com/n1jke/linktracker
+module github.com/n1jke/linktracker_eng
 
 go 1.26.0
 

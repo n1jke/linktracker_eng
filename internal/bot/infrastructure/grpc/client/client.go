@@ -12,10 +12,10 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 
-	"github.com/n1jke/linktracker/internal/bot/application"
-	transportgrpc "github.com/n1jke/linktracker/internal/infrastructure/transport/grpc"
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
-	"github.com/n1jke/linktracker/pkg/retry"
+	"github.com/n1jke/linktracker_eng/internal/bot/application"
+	transportgrpc "github.com/n1jke/linktracker_eng/internal/infrastructure/transport/grpc"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
+	"github.com/n1jke/linktracker_eng/pkg/retry"
 )
 
 type ScrapperGRPCClient struct {

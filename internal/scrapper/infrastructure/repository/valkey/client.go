@@ -7,7 +7,7 @@ import (
 
 	"github.com/valkey-io/valkey-go"
 
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
 )
 
 type MetricsRecorder interface {

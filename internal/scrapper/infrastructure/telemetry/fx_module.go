@@ -7,17 +7,18 @@ import (
 	"github.com/prometheus/client_golang/prometheus/collectors"
 	"go.uber.org/fx"
 
-	"github.com/n1jke/linktracker/config"
-	"github.com/n1jke/linktracker/internal/infrastructure/transport"
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	"github.com/n1jke/linktracker/internal/scrapper/infrastructure/crawlers"
-	qb "github.com/n1jke/linktracker/internal/scrapper/infrastructure/repository/query_builder"
-	rawsql "github.com/n1jke/linktracker/internal/scrapper/infrastructure/repository/sql"
-	cache "github.com/n1jke/linktracker/internal/scrapper/infrastructure/repository/valkey"
-	"github.com/n1jke/linktracker/internal/scrapper/infrastructure/scheduler"
+	"github.com/n1jke/linktracker_eng/config"
+	"github.com/n1jke/linktracker_eng/internal/infrastructure/transport"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/crawlers"
+	qb "github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/repository/query_builder"
+	rawsql "github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/repository/sql"
+	cache "github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/repository/valkey"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/scheduler"
 )
 
-var Module = fx.Module("scrapper-metrics",
+var Module = fx.Module(
+	"scrapper-metrics",
 	fx.Provide(
 		NewPrometheusRegistry,
 		ProvideScrapperMetricsPusher,

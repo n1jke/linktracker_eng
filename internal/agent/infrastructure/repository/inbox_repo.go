@@ -10,9 +10,9 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"github.com/n1jke/linktracker/internal/agent/application"
-	"github.com/n1jke/linktracker/internal/agent/infrastructure/kafka/consumer"
-	sharedrepo "github.com/n1jke/linktracker/internal/infrastructure/repository"
+	"github.com/n1jke/linktracker_eng/internal/agent/application"
+	"github.com/n1jke/linktracker_eng/internal/agent/infrastructure/kafka/consumer"
+	sharedrepo "github.com/n1jke/linktracker_eng/internal/infrastructure/repository"
 )
 
 const (

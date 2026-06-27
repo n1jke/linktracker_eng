@@ -9,12 +9,12 @@ import (
 
 	"github.com/sony/gobreaker/v2"
 
-	"github.com/n1jke/linktracker/internal/bot/application"
-	"github.com/n1jke/linktracker/internal/infrastructure/transport"
-	"github.com/n1jke/linktracker/internal/infrastructure/transport/http/middleware"
-	scrapperhttp "github.com/n1jke/linktracker/internal/infrastructure/transport/http/scrapper"
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
-	"github.com/n1jke/linktracker/pkg/retry"
+	"github.com/n1jke/linktracker_eng/internal/bot/application"
+	"github.com/n1jke/linktracker_eng/internal/infrastructure/transport"
+	"github.com/n1jke/linktracker_eng/internal/infrastructure/transport/http/middleware"
+	scrapperhttp "github.com/n1jke/linktracker_eng/internal/infrastructure/transport/http/scrapper"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
+	"github.com/n1jke/linktracker_eng/pkg/retry"
 )
 
 type ScrapperClient struct {

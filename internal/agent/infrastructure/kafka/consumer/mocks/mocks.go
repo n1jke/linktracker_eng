@@ -13,7 +13,7 @@ import (
 	context "context"
 	reflect "reflect"
 
-	application "github.com/n1jke/linktracker/internal/agent/application"
+	application "github.com/n1jke/linktracker_eng/internal/agent/application"
 	kafka "github.com/segmentio/kafka-go"
 	gomock "go.uber.org/mock/gomock"
 )

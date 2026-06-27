@@ -7,10 +7,10 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 	"go.uber.org/fx"
 
-	"github.com/n1jke/linktracker/config"
-	"github.com/n1jke/linktracker/internal/bot/application"
-	consumer "github.com/n1jke/linktracker/internal/bot/infrastructure/kafka"
-	"github.com/n1jke/linktracker/internal/bot/infrastructure/scheduler"
+	"github.com/n1jke/linktracker_eng/config"
+	"github.com/n1jke/linktracker_eng/internal/bot/application"
+	consumer "github.com/n1jke/linktracker_eng/internal/bot/infrastructure/kafka"
+	"github.com/n1jke/linktracker_eng/internal/bot/infrastructure/scheduler"
 )
 
 var Module = fx.Module(

@@ -8,8 +8,8 @@ import (
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/types/known/emptypb"
 
-	transportgrpc "github.com/n1jke/linktracker/internal/infrastructure/transport/grpc"
-	"github.com/n1jke/linktracker/internal/scrapper/application"
+	transportgrpc "github.com/n1jke/linktracker_eng/internal/infrastructure/transport/grpc"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
 )
 
 type ScrapperGRPCServer struct {

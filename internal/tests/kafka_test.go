@@ -10,7 +10,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/n1jke/linktracker/internal/bot/infrastructure/kafka/mocks"
+	"github.com/n1jke/linktracker_eng/internal/bot/infrastructure/kafka/mocks"
 	"github.com/riferrei/srclient"
 	"github.com/segmentio/kafka-go"
 	"github.com/stretchr/testify/require"
@@ -20,9 +20,9 @@ import (
 	"github.com/testcontainers/testcontainers-go/wait"
 	"go.uber.org/mock/gomock"
 
-	consumer "github.com/n1jke/linktracker/internal/bot/infrastructure/kafka"
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	producer "github.com/n1jke/linktracker/internal/scrapper/infrastructure/kafka"
+	consumer "github.com/n1jke/linktracker_eng/internal/bot/infrastructure/kafka"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	producer "github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/kafka"
 )
 
 const (
@@ -168,7 +168,8 @@ func setupKafkaInfrastructure(ctx context.Context, t *testing.T, ctrl *gomock.Co
 	})
 
 	// kafka
-	kafkaC, err := kafkatc.Run(ctx,
+	kafkaC, err := kafkatc.Run(
+		ctx,
 		kafkaImage,
 		kafkatc.WithClusterID("test-cluster"),
 		network.WithNetworkName([]string{"kafka-broker"}, net.Name),

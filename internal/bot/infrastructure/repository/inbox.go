@@ -10,8 +10,8 @@ import (
 	"github.com/jackc/pgx/v5/pgconn"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	consumer "github.com/n1jke/linktracker/internal/bot/infrastructure/kafka"
-	"github.com/n1jke/linktracker/internal/infrastructure/repository"
+	consumer "github.com/n1jke/linktracker_eng/internal/bot/infrastructure/kafka"
+	"github.com/n1jke/linktracker_eng/internal/infrastructure/repository"
 )
 
 const (

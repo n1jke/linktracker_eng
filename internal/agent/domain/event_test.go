@@ -6,7 +6,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/n1jke/linktracker/internal/agent/domain"
+	"github.com/n1jke/linktracker_eng/internal/agent/domain"
 )
 
 func TestDescription_SplitToTokens(t *testing.T) {

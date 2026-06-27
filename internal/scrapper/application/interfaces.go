@@ -6,7 +6,7 @@ import (
 
 	"github.com/google/uuid"
 
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
 )
 
 //go:generate mockgen -source=interfaces.go -destination=mocks/mocks.go -package=mocks

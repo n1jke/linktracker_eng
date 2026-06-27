@@ -13,7 +13,7 @@ import (
 	"github.com/segmentio/kafka-go"
 	"github.com/segmentio/kafka-go/sasl/plain"
 
-	"github.com/n1jke/linktracker/internal/agent/application"
+	"github.com/n1jke/linktracker_eng/internal/agent/application"
 )
 
 const (
@@ -170,7 +170,8 @@ func (k *KafkaConsumer) sendDLQ(ctx context.Context, msg *kafka.Message, err err
 	dlqMsg := kafka.Message{
 		Key:   msg.Key,
 		Value: msg.Value,
-		Headers: append(msg.Headers,
+		Headers: append(
+			msg.Headers,
 			kafka.Header{Key: "source_topic", Value: []byte(msg.Topic)},
 			kafka.Header{Key: "source_partition", Value: []byte(strconv.Itoa(msg.Partition))},
 			kafka.Header{Key: "source_offset", Value: []byte(strconv.FormatInt(msg.Offset, 10))},

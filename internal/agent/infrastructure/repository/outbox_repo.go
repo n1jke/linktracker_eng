@@ -8,8 +8,8 @@ import (
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 
-	"github.com/n1jke/linktracker/internal/agent/application"
-	sharedrepo "github.com/n1jke/linktracker/internal/infrastructure/repository"
+	"github.com/n1jke/linktracker_eng/internal/agent/application"
+	sharedrepo "github.com/n1jke/linktracker_eng/internal/infrastructure/repository"
 )
 
 const (

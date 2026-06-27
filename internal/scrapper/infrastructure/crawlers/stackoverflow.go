@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/n1jke/linktracker/internal/scrapper/application"
-	"github.com/n1jke/linktracker/internal/scrapper/domain"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/application"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/domain"
 )
 
 type soUser struct {

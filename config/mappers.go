@@ -3,11 +3,11 @@ package config
 import (
 	"github.com/sony/gobreaker/v2"
 
-	consumer "github.com/n1jke/linktracker/internal/bot/infrastructure/kafka"
-	producer "github.com/n1jke/linktracker/internal/scrapper/infrastructure/kafka"
-	cache "github.com/n1jke/linktracker/internal/scrapper/infrastructure/repository/valkey"
-	"github.com/n1jke/linktracker/internal/scrapper/infrastructure/scheduler"
-	"github.com/n1jke/linktracker/pkg/retry"
+	consumer "github.com/n1jke/linktracker_eng/internal/bot/infrastructure/kafka"
+	producer "github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/kafka"
+	cache "github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/repository/valkey"
+	"github.com/n1jke/linktracker_eng/internal/scrapper/infrastructure/scheduler"
+	"github.com/n1jke/linktracker_eng/pkg/retry"
 )
 
 func (c *AppConfig) MapSchedulerConfig() *scheduler.Config {

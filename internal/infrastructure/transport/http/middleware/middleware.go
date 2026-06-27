@@ -7,7 +7,7 @@ import (
 
 	"golang.org/x/time/rate"
 
-	"github.com/n1jke/linktracker/internal/infrastructure/transport"
+	"github.com/n1jke/linktracker_eng/internal/infrastructure/transport"
 )
 
 type Func func(http.Handler) http.Handler

@@ -7,13 +7,14 @@ import (
 	"github.com/prometheus/client_golang/prometheus/collectors"
 	"go.uber.org/fx"
 
-	"github.com/n1jke/linktracker/config"
-	"github.com/n1jke/linktracker/internal/agent/infrastructure/ai"
-	"github.com/n1jke/linktracker/internal/agent/infrastructure/scheduler"
-	"github.com/n1jke/linktracker/internal/infrastructure/transport"
+	"github.com/n1jke/linktracker_eng/config"
+	"github.com/n1jke/linktracker_eng/internal/agent/infrastructure/ai"
+	"github.com/n1jke/linktracker_eng/internal/agent/infrastructure/scheduler"
+	"github.com/n1jke/linktracker_eng/internal/infrastructure/transport"
 )
 
-var Module = fx.Module("agent-metrics",
+var Module = fx.Module(
+	"agent-metrics",
 	fx.Provide(
 		NewPrometheusRegistry,
 		ProvideAgentMetricsPusher,
