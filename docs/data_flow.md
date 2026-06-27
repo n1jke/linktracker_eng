@@ -61,10 +61,10 @@ sequenceDiagram
     User-->>User: receives link updates
 ```
 
-## Fault tolerance
+## Fault Tolerance
 
-- **Transactional Outbox/Inbox** Все события сохраняются/обновляются в рамках транзакции БД, и только потом обрабатываются  фоновой job для отправки/обработки события
-- **Idempotency:** Каждое событие включает `idempotency-key` header, consumers обеспечивает идемпотентную обработку через unique constraints
-- **DLQ:** Необработанные события после допустимого лимита попадают в dead-letter topics для ручного разбора
-- **Circuit Breaker + Retry:** gRPC/HTTP вызовы используют exponential backoff и circuit breaker
-- **Rate Limiter** gRPC/HTTP запросы к scrapper сервису использую rate-limitting interceptors/middleware
+- **Transactional Outbox/Inbox:** All events are persisted/updated within a single DB transaction and only then processed by a background job for sending or further processing.
+- **Idempotency:** Each event includes an `idempotency-key` header; consumers ensure idempotent processing via unique constraints.
+- **DLQ:** Unprocessed events exceeding the retry limit are moved to dead-letter topics for manual inspection.
+- **Circuit Breaker + Retry:** gRPC/HTTP calls use exponential backoff with jitter and circuit breaker.
+- **Rate Limiter:** gRPC/HTTP requests to the scrapper service use rate-limiting interceptors/middleware.

@@ -1,0 +1,20 @@
+{
+  "name": "LinkTracker",
+  "image": "mcr.microsoft.com/devcontainers/go:latest",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:4.0.0": {}
+  },
+  "forwardPorts": [3000, 8085, 9090, 9091],
+  "portsAttributes": {
+    "3000": { "label": "Grafana" },
+    "8085": { "label": "Kafka UI" },
+    "9090": { "label": "Prometheus" },
+    "9091": { "label": "Pushgateway" }
+  },
+  "postCreateCommand": "cd deploy && cp -n .env.example .env 2>/dev/null; cp -n valkey.example.conf valkey.conf 2>/dev/null; cp -n sentinel.example.conf sentinel.conf 2>/dev/null; cp -n users.example.acl users.acl 2>/dev/null; echo '--- Config files created. Edit deploy/.env to add your tokens ---'",
+  "customizations": {
+    "vscode": {
+      "extensions": ["golang.go"]
+    }
+  }
+}

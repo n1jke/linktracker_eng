@@ -1,40 +1,40 @@
-# Запуск и разработка
+# Setup & Development
 
-## 1. Получение токенов
+## 1. Obtaining Tokens
 
-- **Telegram:** Создать бота и получить его тоекен через [@BotFather](https://telegram.me/BotFather)
-- **GitHub:** Получить токен в [github.com/settings/tokens](https://github.com/settings/tokens) -> Personal access tokens -> Token(Classic)
-- **HuggingFace:** [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) -> создать токен с `read` правами
+- **Telegram:** Create a bot and get its token via [@BotFather](https://telegram.me/BotFather)
+- **GitHub:** Generate a token at [github.com/settings/tokens](https://github.com/settings/tokens) -> Personal access tokens -> Token (Classic)
+- **HuggingFace:** [huggingface.co/settings/tokens](https://huggingface.co/settings/tokens) -> create a token with `read` permissions
 
-## 2. Настройка окружения
+## 2. Environment Setup
 
-Скопировать примеры конфигов и установить свои токены в .env а также `<username>` и `<password>` для Valkey:
+Copy the example configs and set your tokens in `.env`, as well as `<username>` and `<password>` for Valkey:
 
 ```bash
 cd deploy
-cp .env.example .env                    
+cp .env.example .env
 cp valkey.example.conf valkey.conf
 cp sentinel.example.conf sentinel.conf
 cp users.example.acl users.acl
 ```
 
-## 3. Сборка и запуск
+## 3. Build & Run
 
 ```bash
 cd deploy
 docker compose up -d --build
 ```
 
-`--build` нужен при первой сборке или после изменений в коде.
+`--build` is required on first run or after code changes.
 
-## 4. Тестирование и линтинг
+## 4. Testing & Linting
 
 ```bash
 make fmt          # go fmt
 make lint         # golangci-lint
-make test         # unit-тесты
-make test-slow    # интеграционные тесты(testcontainers)
-make test-all     # все тесты
-make html_test    # html отчет тестов
-make clean        # удалить артефакты тестов
+make test         # unit tests
+make test-slow    # integration tests (testcontainers)
+make test-all     # all tests
+make html_test    # HTML test report
+make clean        # remove test artifacts
 ```

@@ -13,7 +13,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_PREFIX: ${{ github.repository_owner }}/linktracker
+  IMAGE_PREFIX: ${{ github.repository_owner }}/linktrackerengeng
 
 jobs:
   release:

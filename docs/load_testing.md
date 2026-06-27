@@ -1,19 +1,19 @@
-# Load testing
+# Load Testing
 
-## 1. Конфиг
+## 1. Configuration
 
-- **БД:** 1 000 пользователей у каждого 100 подписок => 100 000 подписок
-- **Количество параллельных пользователей VU:** 32(2 * cpu_count)
-- **Протокол:** gRPC / HTTP с valkey и без него
-- **Сам теста:**
-  - Ramp-up: 1 минута.
-  - Stage: 5 минут.
-  - Ramp-down: 30 секунд.
-- **read/write oper:** 99/1
+- **DB:** 1,000 users each with 100 subscriptions => 100,000 subscriptions
+- **Virtual Users (VU):** 32 (2 * cpu_count)
+- **Protocol:** gRPC / HTTP with and without Valkey
+- **Test stages:**
+  - Ramp-up: 1 minute
+  - Stage: 5 minutes
+  - Ramp-down: 30 seconds
+- **Read/Write ratio:** 99/1
 
-## 2. Результаты
+## 2. Results
 
-| Метрика | http+cache | http | grpc | grpc+cache |
+| Metric | http+cache | http | grpc | grpc+cache |
 | --- | --- | --- | --- | --- |
 | **rps** | 273.78 | 277.7 | 265.14 | 271.05 |
 | **avg** | 2ms | 4ms | 5ms | 2ms |
@@ -24,8 +24,8 @@
 
 ---
 
-## 3. Выводы
+## 3. Conclusions
 
-- Ну ошибок мало, можно сказать что очень мало, но наверное не очень правильно при такой очень искусственной нагрузке на них опираться
-- Персентили ответов для вариантов с valkey в 1.8-2.5 раза меньше в среднем
-- http отработал побыстрее grpc)), но можно обосновать что скрипт для теста пишется на js и json это его нативный формат
+- The error rate is very low across all configurations, though relying on it under such synthetic load may not be representative.
+- Response percentiles for Valkey-backed variants are 1.8–2.5 times lower on average.
+- HTTP was slightly faster than gRPC, which can be explained by the test script being written in JavaScript (JSON is its native format).
