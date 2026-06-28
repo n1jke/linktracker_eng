@@ -2,7 +2,9 @@
   "name": "LinkTracker",
   "image": "mcr.microsoft.com/devcontainers/go:latest",
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:4.0.0": {}
+    "ghcr.io/devcontainers/features/docker-in-docker:latest": {
+      "moby": false
+    }
   },
   "forwardPorts": [3000, 8085, 9090, 9091],
   "portsAttributes": {

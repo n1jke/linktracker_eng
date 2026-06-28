@@ -57,7 +57,9 @@ The project consists of three microservices communicating via **gRPC** and **Kaf
 
 ## Demo
 
-[Video demo](https://todo) - todo: walkthrough of the project.
+[Video demo](https://www.youtube.com/watch?v=ZnGeO3fNaOQ) — walkthrough of the project.
+
+**Note:** Project not be deployed to a publicly accessible server. I try with GitHub Codespaces and some other providers but met problems with docker deploy (locally all work correct and it also easy to start with [guide](/docs/guide.md)). The video demo above demonstrates the complete functionality.
 
 ## Technologies
 
